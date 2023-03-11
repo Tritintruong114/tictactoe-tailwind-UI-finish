@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Board from "./Board";
+// import History from "./History";
 
 function Game() {
   const [squares, setSquares] = useState(Array(9).fill(null));
@@ -80,11 +81,12 @@ function Game() {
 
   const prevMove = () => {
     setSquares("");
-    // setPlayer(false);
+    
   };
 
   return (
     <div className="md:flex  w-3/4 h-4/6 flex flex-col items-center justify-center gap-3 py-6">
+      {/* <History/> */}
       {!player && (
         <div className="flex md:flex flex-col justify-center items-center">
           <h1 class="flex flex-row md:text-6xl justify-center w-full items-center font-bold text-3xl text-orange-500">
@@ -117,12 +119,16 @@ function Game() {
       )}
 
       {player && (
-        <div className="md:flex rounded-xl w-1/4 h-3/4 bg-gradient-to-br  from-red-200 to-red-400 flex flex-col justify-center items-center gap-6">
+        
+        
+        <div className="md:flex flex-col rounded-xl w-1/4 h-3/4 bg-gradient-to-br  from-red-200 to-red-400 flex flex-col justify-center items-center gap-6">
           <span className="md:flex text-gray-100 mt-6 text-4xl flex flex-row justify-center items-center ">
             Next player is:<span className="animate-[wave_3s_ease-in-out_99] "> {xIsNext ? "🐼" : "🐯"}</span>
           </span>
           <Board squares={squares} handleClick={handleClick} />
-        </div>
+          
+          </div>
+          
       )}
       {player && (
         <div className="flex flex-row justify-around items-center w-1/5 h-fit">

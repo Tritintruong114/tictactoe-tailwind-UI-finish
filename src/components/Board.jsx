@@ -6,7 +6,7 @@ export default function Board({ color, squares, handleClick }) {
   return (
     <div className="md:flex flex w-full h-full flex-col justify-center items-center ">
       <div className="md:flex  flex flex-col h-3/4 w-3/4 justify-center items-center gap-12 ">
-        <div className="w-fit h-1/4 md:flex space-x-3 flex flex-row justify-center items-center">
+        <div className="w-fit md:flex h-1/4  space-x-3 flex flex-row justify-center items-center">
           <Square
             color={color}
             title={squares[0]}
