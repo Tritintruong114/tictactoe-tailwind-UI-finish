@@ -67,17 +67,17 @@ function Game() {
       </h2>
 
       <div className="md:flex rounded-xl w-2/6 h-3/4 bg-gradient-to-br  from-red-200 to-red-400 flex flex-col justify-center items-center gap-6">
-        <span className="md:flex text-gray-100 font-light flex flex-row justify-center items-center ">
+        <span className="md:flex text-gray-100 font- flex flex-row justify-center items-center ">
           Next player is: {xIsNext ? "X" : "O"}
         </span>
         <Board squares={squares} handleClick={handleClick} />
       </div>
-      <div className="flex flex-row justify-between items-center w-1/5">
-        <button className="text-cyan-500  flex items-center justify-center items-center font-light text-xs bg-gradient-to-r from-indigo-200 via-red-200 to-yellow-100 hover:text-red-500 hover:scale-125 transition ease-out  w-full rounded-lg">
+      <div className="flex flex-row justify-around items-center w-2/5 h-fit">
+        <button className="text-cyan-500  font-light text-xs bg-gradient-to-r from-indigo-200 h-5 via-red-200 to-yellow-200 hover:text-red-500 hover:scale-125 transition ease-out  w-1/4  rounded-lg">
           Undo
         </button>
         <button
-          className="text-cyan-500 flex items-center justify-center items-center font-light text-xs bg-gradient-to-r from-indigo-200 via-red-200 to-yellow-100 hover:text-red-500 hover:scale-125 transition ease-out  w-full rounded-lg "
+          className="text-cyan-500  font-light text-xs bg-gradient-to-r from-indigo-200 h-5 via-red-200 to-yellow-200 hover:text-red-500 hover:scale-125 transition ease-out  w-1/4  rounded-lg "
           onClick={handlRestart}
         >
           Restart
