@@ -61,7 +61,10 @@ function Game() {
   };
 
   return (
-    <div className="md:flex   w-3/4 h-3/4 flex flex-col items-center justify-center gap-3">
+    <div className="md:flex  w-3/4 h-5/6 flex flex-col items-center justify-center gap-3">
+      <h1 class="flex justify-center w-full items-center font-light text-lg text-orange-500">
+        Hi there <span class="animate-[wave_5s_ease-in-out_99] ">👋🏻</span>
+      </h1>
       <h2 className="md:flex  shadow-xl  text-gray-100 text-sm py-1  flex justify-center rounded-xl items-center font-light w-1/4  bg-gradient-to-tr from-red-100 to-red-400">
         Winner is: {winner ? winner : "N/N"}
       </h2>
@@ -73,11 +76,11 @@ function Game() {
         <Board squares={squares} handleClick={handleClick} />
       </div>
       <div className="flex flex-row justify-around items-center w-2/5 h-fit">
-        <button className="text-cyan-500  font-light text-xs bg-gradient-to-r from-indigo-200 h-5 via-red-200 to-yellow-200 hover:text-red-500 hover:scale-125 transition ease-out  w-1/4  rounded-lg">
+        <button className="text-red-500  font-light text-xs bg-gradient-to-r from-indigo-200 h-5  via-red-200 to-yellow-200 hover:text-red-500 hover:scale-125 transition ease-out  w-1/4  rounded-lg">
           Undo
         </button>
         <button
-          className="text-cyan-500  font-light text-xs bg-gradient-to-r from-indigo-200 h-5 via-red-200 to-yellow-200 hover:text-red-500 hover:scale-125 transition ease-out  w-1/4  rounded-lg "
+          className="text-red-500  font-light text-xs bg-gradient-to-r from-indigo-200 h-5 via-red-200 to-yellow-200 hover:text-red-500 hover:scale-125 transition ease-out  w-1/4  rounded-lg "
           onClick={handlRestart}
         >
           Restart
