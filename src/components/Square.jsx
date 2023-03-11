@@ -2,12 +2,14 @@ import React from "react";
 
 function Square({ title, handleClick }) {
   return (
+    <div>
     <button
-      className=" md:flex bg-gray-100 hover:scale-125 transition ease-out font-bold h-8 w-8 text-red-500 rounded-md"
+      className=" md:flex flex justify-center items-center text-6xl bg-gray-100  hover:scale-125 transition ease-out font-bold h-32 w-32 rounded-md"
       onClick={handleClick}
     >
-      {title}
-    </button>
+      <span className="animate-[wave_3s_ease-in-out_99]">{title}</span>
+      </button>
+      </div>
   );
 }
 

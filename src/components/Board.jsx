@@ -4,9 +4,9 @@ import Square from "./Square";
 export default function Board({ color, squares, handleClick }) {
   // const [title,setTitle] = useState()
   return (
-    <div className="md:flex">
-      <div className="md:flex flex flex-col h-fit w-fit justify-center items-center gap-3 ">
-        <div className="w-fit md:flex space-x-3 flex flex-row justify-center items-center">
+    <div className="md:flex flex w-full h-full flex-col justify-center items-center ">
+      <div className="md:flex  flex flex-col h-3/4 w-3/4 justify-center items-center gap-12 ">
+        <div className="w-fit h-1/4 md:flex space-x-3 flex flex-row justify-center items-center">
           <Square
             color={color}
             title={squares[0]}
@@ -23,7 +23,7 @@ export default function Board({ color, squares, handleClick }) {
             handleClick={() => handleClick(2)}
           />
         </div>
-        <div className="w-fit md:flex space-x-3 flex flex-row justify-center items-center">
+        <div className="w-fit h-1/4 md:flex space-x-3 flex flex-row justify-center items-center">
           <Square
             color={color}
             title={squares[3]}
@@ -40,7 +40,7 @@ export default function Board({ color, squares, handleClick }) {
             handleClick={() => handleClick(5)}
           />
         </div>
-        <div className="w-fit md:flex space-x-3 flex flex-row justify-center items-center">
+        <div className="w-fit h-1/4 md:flex space-x-3 flex flex-row justify-center items-center">
           <Square
             color={color}
             title={squares[6]}
