@@ -45,11 +45,10 @@ function Game() {
     return null;
   };
   const chosePlayerPanda = () => {
-    console.log(setSquares(squares));
+    setPlayer(true);
   };
 
   const chosePlayerTiger = () => {
-    setXIsNext("🐯");
     setPlayer(true);
   };
   //Handle player
@@ -86,11 +85,9 @@ function Game() {
       {!player && (
         <div className="flex md:flex flex-col justify-center items-center">
           <h1 class="flex flex-row md:text-6xl justify-center w-full items-center font-bold text-3xl text-orange-500">
-            Hi there{" "}
-            <span class="animate-[wave_3s_ease-in-out_99] md:text-6xl ">
-              👋🏻
-            </span>
-            <span>Choose your character</span>
+            Hi there
+            <span class="md:flex animate-[wave_3s_ease-in-out_99]  ">👋🏻</span>
+            <span className="md:flex">Choose your character</span>
           </h1>
           <div className="flex flex-row gap-x-6">
             <button
