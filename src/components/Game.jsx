@@ -3,11 +3,12 @@ import Board from "./Board";
 // import History from "./History";
 
 function Game() {
-  const [squares, setSquares] = useState(Array(9).fill(null));
+  const [squares, setSquares] = useState([Array(9).fill(null)]);
   const [xIsNext, setXIsNext] = useState("");
   const [winner, setWinner] = useState();
-  // const [color, setColor] = useState();
   const [player, setPlayer] = useState(false);
+  const [history, setHistory] = useState(Array(9).fill(null));
+  const [currentMove, setCurrentMove] = useState(0);
 
   //Declaring a Winner
   useEffect(() => {
@@ -60,14 +61,18 @@ function Game() {
     if (calculateWinner(squares) || squares[i]) {
       return;
     } // this is for stop the game when ever 2 of this condition true.
+
+    const nextHistory = [...squares.slice(0, currentMove + 1), i];
+    console.log(nextHistory);
+    //this const will return a list off array, if u click squares [2] is the first
+    //it return Array[...], 1: 2. This one mean fisrt move is Array[2].
+    // setSquares(nextHistory);
+    setCurrentMove(nextHistory.length - 1);
+    // console.log(currentMove);
+
     const nextSquare = [...squares];
     nextSquare[i] = xIsNext ? "🐼" : "🐯";
     setSquares(nextSquare);
-
-    const prevSquare = nextSquare[i];
-
-    console.log(prevSquare);
-
     setXIsNext((prev) => !prev);
   };
   //
@@ -78,8 +83,35 @@ function Game() {
     setPlayer(false);
   };
 
-  const prevMove = () => {
-    setSquares("");
+  const prevMove = (i) => {
+    // const nextHistory = [...squares.slice(0, currentMove + 1), i];
+
+    // console.log(nextHistory);
+    // setCurrentMove(currentMove - 1);
+
+    const prevSquare = [...squares];
+
+    console.log(prevSquare.slice(0, currentMove - 1));
+
+    prevSquare[i] = xIsNext ? "🐼" : "🐯";
+
+    setSquares(prevSquare.slice(0, currentMove - 1));
+
+    setXIsNext((prev) => !prev);
+  };
+
+  const moves = (currentMove) => {
+    let historyBoard;
+    if (currentMove > 0) {
+      historyBoard = "Go to move number " + currentMove;
+    } else return;
+    return (
+      <div>
+        <li key={currentMove}>
+          <button onClick={() => prevMove(currentMove)}>{historyBoard}</button>
+        </li>
+      </div>
+    );
   };
 
   return (
@@ -118,20 +150,18 @@ function Game() {
           <Board squares={squares} handleClick={handleClick} />
         </div>
       )}
-
       {player && !winner && (
-        <div className="md:flex rounded-xl w-5/12 h-full bg-gradient-to-br  from-red-300 to-orange-200 flex flex-col justify-center items-center gap-6">
+        <div className="md:flex rounded-xl w-5/12 h-full bg-gradient-to-br  from-red-300 to-orange-200 flex flex-row justify-center items-center gap-6">
           <span className="md:flex text-gray-100 mt-6 text-lg font-light absolute top-0 flex flex-row justify-center items-center ">
             Next player is:
             <span className="animate-[wave_3s_ease-in-out_99] ">
               {xIsNext ? "🐼" : "🐯"}
             </span>
           </span>
-
           <Board squares={squares} handleClick={handleClick} />
+          <div>{moves}</div>
         </div>
       )}
-
       {player && (
         <div className="flex flex-row justify-between   md:flex items-center w-2/5 h-fit">
           <button
