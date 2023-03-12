@@ -62,12 +62,12 @@ function Game() {
       return;
     } // this is for stop the game when ever 2 of this condition true.
 
-    const nextHistory = [...squares.slice(0, currentMove + 1), i];
-    console.log(nextHistory);
+    const history = [...squares];
+    console.log(history);
     //this const will return a list off array, if u click squares [2] is the first
     //it return Array[...], 1: 2. This one mean fisrt move is Array[2].
     // setSquares(nextHistory);
-    setCurrentMove(nextHistory.length - 1);
+    setCurrentMove(history.length - 1);
     // console.log(currentMove);
 
     const nextSquare = [...squares];
@@ -84,19 +84,10 @@ function Game() {
   };
 
   const prevMove = (i) => {
-    // const nextHistory = [...squares.slice(0, currentMove + 1), i];
-
-    // console.log(nextHistory);
-    // setCurrentMove(currentMove - 1);
-
-    const prevSquare = [...squares];
-
-    console.log(prevSquare.slice(0, currentMove - 1));
-
-    prevSquare[i] = xIsNext ? "🐼" : "🐯";
-
-    setSquares(prevSquare.slice(0, currentMove - 1));
-
+    const rememberMove = [...squares];
+    rememberMove[i] = xIsNext ? "🐼" : "🐯";
+    console.log(rememberMove);
+    setSquares(rememberMove);
     setXIsNext((prev) => !prev);
   };
 
