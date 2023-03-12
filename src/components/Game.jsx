@@ -118,21 +118,21 @@ function Game() {
     <div className="md:flex  w-full h-full flex flex-col items-center justify-center gap-3 py-6">
       {!player && (
         <div className="flex md:flex flex-col justify-center items-center">
-          <h1 class="flex flex-row md:text-6xl justify-center w-full items-center font-bold text-3xl text-orange-500">
+          <h1 class="flex  flex-row md:text-8xl justify-center w-full items-center font-bold text-3xl text-orange-500">
             Hi there
             <span class="md:flex animate-[wave_3s_ease-in-out_99]  ">👋🏻</span>
             <span className="md:flex">Choose your character</span>
           </h1>
           <div className="flex flex-row items-center justify-around gap-x-6 pt-10">
             <span
-              className=" text-6xl   hover:scale-150 transition ease-in-out cursor-pointer "
+              className=" text-6xl md:text-8xl  hover:scale-150 transition ease-in-out cursor-pointer "
               onClick={chosePlayerPanda}
             >
               🐼
             </span>
 
             <span
-              className="text-6xl   hover:scale-150 transition ease-in-out cursor-pointer"
+              className="text-6xl md:text-8xl    hover:scale-150 transition ease-in-out cursor-pointer"
               onClick={chosePlayerTiger}
             >
               🐯
@@ -143,7 +143,7 @@ function Game() {
 
       {winner && (
         <div className="md:flex rounded-xl w-5/12 h-full bg-gradient-to-br  from-red-300 to-orange-200 flex flex-col justify-center items-center gap-6">
-          <span className="md:flex text-yellow-200 mt-6 text-2xl font-bold absolute top-0 flex flex-row justify-center items-center ">
+          <span className="md:flex md:text-6xl text-yellow-200  text-2xl font-bold absolute top-0 md:pt-9 pt-3 flex flex-row justify-center items-center ">
             Winner is
             <span className="animate-[wave_3s_ease-in-out_99] ">{winner}</span>
           </span>
@@ -152,7 +152,7 @@ function Game() {
       )}
       {player && !winner && (
         <div className="md:flex rounded-xl w-5/12 h-full bg-gradient-to-br  from-red-300 to-orange-200 flex flex-row justify-center items-center gap-6">
-          <span className="md:flex text-gray-100 mt-6 text-lg font-light absolute top-0 flex flex-row justify-center items-center ">
+          <span className="md:flex md:text-7xl text-gray-100 mt-6 text-lg font-light absolute top-0 flex flex-row justify-center items-center ">
             Next player is:
             <span className="animate-[wave_3s_ease-in-out_99] ">
               {xIsNext ? "🐼" : "🐯"}
@@ -163,16 +163,16 @@ function Game() {
         </div>
       )}
       {player && (
-        <div className="flex flex-row justify-between   md:flex items-center w-2/5 h-fit">
+        <div className="flex flex-row justify-between  items-center w-2/5 h-1/6">
           <button
             onClick={prevMove}
-            className="bg-gradient-to-r from-indigo-200  via-red-200 to-yellow-200 rounded hover:scale-125 hover:text-red-500 transition duration-200 md:text-sm ease-in-out text-sm font-light  flex justify-center items-center md:flex h-full w-1/4 px-3"
+            className="bg-gradient-to-r from-indigo-200  via-red-200 to-yellow-200 rounded hover:scale-125 hover:text-red-500 transition duration-200 md:text-3xl ease-in-out text-md font-light  flex justify-center items-center md:flex h-1/4 w-1/4 px-3"
           >
             Prev
           </button>
           <button
             onClick={handlRestart}
-            className="bg-gradient-to-r from-indigo-200   via-red-200 to-yellow-200 rounded hover:scale-125 hover:text-red-500 transition duration-200 md:text-xs ease-in-out text-sm font-light  flex justify-center items-center md:flex h-full w-1/4 px-3"
+            className="bg-gradient-to-r from-indigo-200   via-red-200 to-yellow-200 rounded hover:scale-125 hover:text-red-500 transition duration-200 md:text-3xl ease-in-out text-md font-light  flex justify-center items-center md:flex h-1/4 w-1/4 px-3"
           >
             Restart
           </button>
