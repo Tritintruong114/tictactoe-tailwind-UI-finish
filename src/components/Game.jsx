@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from "react";
 import Board from "./Board";
-// import History from "./History";
 
 function Game() {
   const [squares, setSquares] = useState([Array(9).fill(null)]);
   const [xIsNext, setXIsNext] = useState("");
   const [winner, setWinner] = useState();
   const [player, setPlayer] = useState(false);
-  const [history, setHistory] = useState([{ squares: Array(9).fill(null) }]);
-  const [currentMove, setCurrentMove] = useState(0);
 
   useEffect(() => {
     const winner = calculateWinner(squares);
@@ -53,21 +50,11 @@ function Game() {
   };
 
   const handleClick = (i) => {
-    const rememberMove = history.slice(0, currentMove + 1);
-    const current = rememberMove[rememberMove.length - 1];
-
     if (calculateWinner(squares) || squares[i]) {
       return;
     }
-    setHistory(
-      rememberMove.concat([
-        {
-          squares: squares,
-        },
-      ])
-    );
 
-    setCurrentMove(rememberMove.length);
+    // setCurrentMove(current);
     const nextSquare = [...squares];
     nextSquare[i] = xIsNext ? "🐼" : "🐯";
     setSquares(nextSquare);
@@ -80,9 +67,12 @@ function Game() {
     setPlayer(false);
   };
 
+  const prevMove = () => {
+    console.log("Testing prevmove");
+  };
+
   return (
     <div className="md:flex w-full h-full flex flex-col justify-center items-center gap-3 py-6">
-      {/* <History history={history} jumpTo={prevMove} /> */}
       {!player && (
         <div className="flex md:flex flex-col justify-center items-center">
           <h1 class="flex flex-row md:text-6xl justify-center w-full items-center font-bold text-3xl text-orange-500">
@@ -131,7 +121,10 @@ function Game() {
       )}
       {player && (
         <div className="flex flex-row justify-between   md:flex items-center w-2/5 h-fit">
-          <button className="bg-gradient-to-r from-indigo-200  via-red-200 to-yellow-200 rounded hover:scale-125 hover:text-red-500 transition duration-200 md:text-sm ease-in-out text-sm font-light  flex justify-center items-center md:flex h-full w-1/4 px-3">
+          <button
+            onClick={prevMove}
+            className="bg-gradient-to-r from-indigo-200  via-red-200 to-yellow-200 rounded hover:scale-125 hover:text-red-500 transition duration-200 md:text-sm ease-in-out text-sm font-light  flex justify-center items-center md:flex h-full w-1/4 px-3"
+          >
             Prev
           </button>
           <button

@@ -9,7 +9,7 @@ function History({ history, jumpTo }) {
           const desc = move ? "Go to move #" + move : "Go to game start";
           return (
             <li key={move}>
-              <button onClick={() => jumpTo(move)}>{desc}</button>
+              <button onClick={() => jumpTo(step)}>{desc}</button>
             </li>
           );
         })}
@@ -18,4 +18,4 @@ function History({ history, jumpTo }) {
   );
 }
 
-// export default History;
+export default History;
