@@ -1,12 +1,21 @@
-import React, { useState } from "react";
+import React from "react";
 
-function History() {
-  const [history, setHistory] = useState("");
+function History({ history, jumpTo }) {
   return (
-    <div className="md:flex relative flex flex-col bg-slate-500 h-full w-full">
-      <div>ABC</div>
+    <div className="history">
+      <h4>History</h4>
+      <ul>
+        {history.map((step, move) => {
+          const desc = move ? "Go to move #" + move : "Go to game start";
+          return (
+            <li key={move}>
+              <button onClick={() => jumpTo(move)}>{desc}</button>
+            </li>
+          );
+        })}
+      </ul>
     </div>
   );
 }
 
-export default History;
+// export default History;
