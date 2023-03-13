@@ -11,7 +11,7 @@ function Game() {
     const winner = calculateWinner(squares);
     if (winner) {
       setWinner(() => {
-        return <hi className="text-red-500 px-1">{winner}</hi>;
+        return <h1 className="text-red-500 px-1">{winner}</h1>;
       });
     }
   }, [squares]);
@@ -39,6 +39,7 @@ function Game() {
     }
     return null;
   };
+
   const chosePlayerPanda = () => {
     setXIsNext("🐼");
     setPlayer(true);
