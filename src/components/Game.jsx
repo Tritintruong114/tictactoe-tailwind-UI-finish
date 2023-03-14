@@ -15,7 +15,7 @@ function Game() {
       });
     }
   }, [squares]);
-
+//for checking
   const calculateWinner = (squares) => {
     const lines = [
       [0, 1, 2],
