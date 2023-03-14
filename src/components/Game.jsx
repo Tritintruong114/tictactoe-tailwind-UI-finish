@@ -103,7 +103,7 @@ function Game() {
 
       {winner && (
         <div className="md:flex rounded-xl w-5/12 h-full bg-gradient-to-br  from-red-300 to-orange-200 flex flex-col justify-center items-center gap-6">
-          <span className="md:flex text-yellow-200 mt-6 text-2xl font-bold absolute top-0 flex flex-row justify-center items-center ">
+          <span className="md:flex md:text-5xl text-yellow-200 mt-6 text-2xl font-bold absolute top-0 flex flex-row justify-center items-center ">
             Winner is
             <span className="animate-[wave_3s_ease-in-out_99] ">{winner}</span>
           </span>
@@ -113,7 +113,7 @@ function Game() {
 
       {player && !winner && (
         <div className="md:flex rounded-xl w-5/12 h-full bg-gradient-to-br  from-red-300 to-orange-200 flex flex-row justify-center items-center gap-6">
-          <span className="md:flex text-gray-100 mt-6 text-lg font-light absolute top-0 flex flex-row justify-center items-center ">
+          <span className="md:flex md:text-6xl text-gray-100 mt-6 text-lg font-light absolute top-0 flex flex-row justify-center items-center ">
             Next player is:
             <span className="animate-[wave_3s_ease-in-out_99] ">
               {xIsNext ? "🐼" : "🐯"}
@@ -126,13 +126,13 @@ function Game() {
         <div className="flex flex-row justify-between   md:flex items-center w-2/5 h-fit">
           <button
             onClick={prevMove}
-            className="bg-gradient-to-r from-indigo-200  via-red-200 to-yellow-200 rounded hover:scale-125 hover:text-red-500 transition duration-200 md:text-sm ease-in-out text-sm font-light  flex justify-center items-center md:flex h-full w-1/4 px-3"
+            className="bg-gradient-to-r from-indigo-200  via-red-200 to-yellow-200 rounded hover:scale-125 hover:text-red-500 transition duration-200 md:text-3xl ease-in-out text-sm font-light  flex justify-center items-center md:flex h-full w-1/4 px-3"
           >
             Prev
           </button>
           <button
             onClick={handlRestart}
-            className="bg-gradient-to-r from-indigo-200   via-red-200 to-yellow-200 rounded hover:scale-125 hover:text-red-500 transition duration-200 md:text-xs ease-in-out text-sm font-light  flex justify-center items-center md:flex h-full w-1/4 px-3"
+            className="bg-gradient-to-r  from-indigo-200   via-red-200 to-yellow-200 rounded hover:scale-125 hover:text-red-500 transition duration-200 md:text-3xl ease-in-out text-sm font-light  flex justify-center items-center md:flex h-full w-1/4 px-3"
           >
             Restart
           </button>
