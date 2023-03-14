@@ -40,22 +40,10 @@ function Game() {
     return null;
   };
 
-  const chosePlayerPanda = () => {
-    setXIsNext("🐼");
-    setPlayer(true);
-  };
-
-  const chosePlayerTiger = () => {
-    setPlayer(true);
-    setXIsNext("🐯");
-  };
-
   const handleClick = (i) => {
     if (calculateWinner(squares) || squares[i]) {
       return;
     }
-
-    // setCurrentMove(current);
     const nextSquare = [...squares];
     nextSquare[i] = xIsNext ? "🐼" : "🐯";
     setSquares(nextSquare);
@@ -66,6 +54,20 @@ function Game() {
     setSquares("");
     setWinner("");
     setPlayer(false);
+  };
+
+  const chosePlayerPanda = (i) => {
+    const nextSquare = [...squares];
+    nextSquare[i] = xIsNext ? "🐼" : "🐯";
+    setXIsNext((prev) => !prev);
+    setPlayer(true);
+  };
+
+  const chosePlayerTiger = (i) => {
+    const nextSquare = [...squares];
+    nextSquare[i] = xIsNext ? "🐼" : "🐯";
+    setXIsNext((prev) => !prev);
+    setPlayer(true);
   };
 
   const prevMove = () => {
