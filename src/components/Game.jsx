@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Board from "./Board";
 
 function Game() {
-  const [squares, setSquares] = useState([Array(9).fill(null)]);
+  const [squares, setSquares] = useState(Array(9).fill(null));
   const [xIsNext, setXIsNext] = useState("");
   const [winner, setWinner] = useState();
   const [player, setPlayer] = useState(false);
@@ -57,16 +57,12 @@ function Game() {
   };
 
   const chosePlayerPanda = (i) => {
-    const nextSquare = [...squares];
-    nextSquare[i] = xIsNext ? "🐼" : "🐯";
-    setXIsNext((prev) => !prev);
+    setXIsNext(true)
     setPlayer(true);
   };
 
   const chosePlayerTiger = (i) => {
-    const nextSquare = [...squares];
-    nextSquare[i] = xIsNext ? "🐼" : "🐯";
-    setXIsNext((prev) => !prev);
+    setXIsNext(false)
     setPlayer(true);
   };
 
@@ -113,7 +109,7 @@ function Game() {
 
       {player && !winner && (
         <div className="md:flex rounded-xl w-5/12 h-full bg-gradient-to-br  from-red-300 to-orange-200 flex flex-row justify-center items-center gap-6">
-          <span className="md:flex md:text-6xl text-gray-100 mt-6 text-lg font-light absolute top-0 flex flex-row justify-center items-center ">
+          <span className="md:flex md:text-6xl text-gray-100 mt-6 text-lg font-light absolute pt-3 md:pt-6 top-0 flex flex-row justify-center items-center ">
             Next player is:
             <span className="animate-[wave_3s_ease-in-out_99] ">
               {xIsNext ? "🐼" : "🐯"}
