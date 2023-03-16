@@ -1,11 +1,16 @@
 import React, { useState, useEffect } from "react";
 import Board from "./Board";
+import History from "./History";
 
 function Game() {
   const [squares, setSquares] = useState(Array(9).fill(null));
   const [xIsNext, setXIsNext] = useState("");
   const [winner, setWinner] = useState();
   const [player, setPlayer] = useState(false);
+  const [historys, setHistorys] = useState([]);
+  const [havePlayer, setHavePlayer] = useState();
+
+  // const [current,setCurrent]
 
   useEffect(() => {
     const winner = calculateWinner(squares);
@@ -15,7 +20,7 @@ function Game() {
       });
     }
   }, [squares]);
-//for checking
+  //for checking
   const calculateWinner = (squares) => {
     const lines = [
       [0, 1, 2],
@@ -44,39 +49,82 @@ function Game() {
     if (calculateWinner(squares) || squares[i]) {
       return;
     }
-    const nextSquare = [...squares];
-    nextSquare[i] = xIsNext ? "🐼" : "🐯";
-    setSquares(nextSquare);
+
+    //if have the calculate then stop
+    //and squares have a "X" of "O" then cant click to that squares
+
+    const nextSquares = [...squares];
+    nextSquares[i] = xIsNext ? "🐼" : "🐯";
+    setSquares(nextSquares);
     setXIsNext((prev) => !prev);
+
+    const addMove = {
+      player: nextSquares[i],
+      position: i,
+    };
+
+    const saveMove = [...historys];
+    saveMove.push(addMove); //push method
+    setHistorys(saveMove);
+
+    // console.log(addMove);
   };
 
   const handlRestart = () => {
-    setSquares("");
+    setSquares(Array(9).fill(null));
     setWinner("");
     setPlayer(false);
+    setHistorys([]);
   };
 
   const chosePlayerPanda = (i) => {
-    setXIsNext(true)
+    setXIsNext(true);
     setPlayer(true);
   };
 
   const chosePlayerTiger = (i) => {
-    setXIsNext(false)
+    setXIsNext(false);
     setPlayer(true);
   };
 
   const prevMove = () => {
-    console.log("Testing prevmove");
+    //lui 1 buoc lay thang duoi cung ra
+    // console.log("ABC");
+    if (winner) {
+      return;
+    }
+    const notNullSquares = squares.filter((square) => {
+      return square !== null;
+    });
+
+    if (notNullSquares.length === 0) {
+      return;
+    }
+
+    const lastMove = historys.pop();
+    // console.log(lastMove);
+    // console.log(lastMove);
+    //xoa vi tri cua phan tu cuoi cung
+
+    const saveMove = [...squares];
+    saveMove[lastMove.position] = null;
+    setSquares(saveMove);
+    setXIsNext((prev) => !prev);
+
+    // lastMove.position = ;
+
+    //set lai luot danh xIsNext?
   };
 
   return (
     <div className="md:flex w-full h-full flex flex-col justify-center items-center gap-3 py-6">
       {!player && (
         <div className="flex md:flex flex-col justify-center items-center">
-          <h1 class="flex flex-row md:text-6xl justify-center w-full items-center font-bold text-3xl text-orange-500">
+          <h1 className="flex flex-row md:text-6xl justify-center w-full items-center font-bold text-3xl text-orange-500">
             Hi there
-            <span class="md:flex animate-[wave_3s_ease-in-out_99]  ">👋🏻</span>
+            <span className="md:flex animate-[wave_3s_ease-in-out_99]  ">
+              👋🏻
+            </span>
             <span className="md:flex">Choose your character</span>
           </h1>
           <div className="flex flex-row items-center justify-around gap-x-6 pt-10">
@@ -121,12 +169,6 @@ function Game() {
       {player && (
         <div className="flex flex-row justify-between   md:flex items-center w-2/5 h-fit">
           <button
-            onClick={prevMove}
-            className="bg-gradient-to-r from-indigo-200  via-red-200 to-yellow-200 rounded hover:scale-125 hover:text-red-500 transition duration-200 md:text-3xl ease-in-out text-sm font-light  flex justify-center items-center md:flex h-full w-1/4 px-3"
-          >
-            Prev
-          </button>
-          <button
             onClick={handlRestart}
             className="bg-gradient-to-r  from-indigo-200   via-red-200 to-yellow-200 rounded hover:scale-125 hover:text-red-500 transition duration-200 md:text-3xl ease-in-out text-sm font-light  flex justify-center items-center md:flex h-full w-1/4 px-3"
           >
@@ -134,6 +176,11 @@ function Game() {
           </button>
         </div>
       )}
+
+      {}
+      <div className="flex absolute right-0">
+        <History historys={historys} />
+      </div>
     </div>
   );
 }
